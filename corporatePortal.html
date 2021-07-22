@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <link rel="icon" href="/corporate/Images/favicon.png" type="image/x-icon">
+    <title>Corporate Portal</title>
+    <link rel="stylesheet" href="/corporate/Content/bootstrap.min.css">
+    <link href="/corporate/Content/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/corporate/Content/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/corporate/Content/style.css">
+    <link rel="stylesheet" href="/corporate/Content/responsive.css">
+    <link href="/corporate/Content/gmchr_custom.css" rel="stylesheet" type="text/css" />
+    <style>
+        .captchaImageStyle {
+            width: 320px;
+            height: 55px;
+            border: solid 1px #d2d2d2;
+            border-radius:4px;
+        }
+        .loginBox {
+            margin-bottom: 211px !important;
+        }
+        .moveup {
+            position: relative;
+            /* top: -232px; */
+            /* font-size: 14px; */
+            margin: auto;
+            /* max-width: 840px; */
+            margin: auto;
+            width: 100%;
+            position: relative;
+            padding: 20px 0;
+        }
+        .loginBoxMain {
+                   margin-top:29px;
+        }
+    </style>
+</head>
+
+<body bgcolor="#f7f8fc" style="height: 100vh; /* display:flex; */ padding-top: 0;" class="unselectable">
+    <div class="loginBox">
+        <div class="loginBoxMain">
+            <ul class="row loginUl">
+                <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-0">
+                    <div class="logBg">
+                        <div class="logoLogin">
+                            <img src="/corporate/Images/logo-login.png" />
+                        </div>
+                        <div class="loginTxt">
+                            <h4>Corporate Portal </h4>
+                            <p>
+                                Corporate Health Claims <br /> Management Simplified!
+                            </p>
+                        </div>
+                        
+                    </div>
+                </li>
+                <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+<form action="/corporate/Login/SendOTP" method="post">                            <ul class="loginRight loginUl" id="loginBox">
+                                <li class="otpfg"><h3>Login</h3> </li>
+                                <li>
+                                    <label>Corporate Email ID</label>
+
+                                    <input autocomplete="off" class="form-control input100 dropdisable" id="txtEmailId" maxlength="50" name="EMAIL_ID" onkeypress="return AvoidSpace(event)" placeholder="Enter Corporate Email ID" type="text" value="" />
+
+                                    <div id="divEmailIdValid" class="error" style="display:block;"></div>
+                                </li>
+
+                                <li class="captchaBoxMain">
+                                    
+<script type="text/javascript">
+$(function () {$('#05e57ddd0bda4f1bbf903d7a932936bd').show();})
+function ______a41c0c574afc466caa16936c9ce27707________() { $('#05e57ddd0bda4f1bbf903d7a932936bd').hide(); $.post("/corporate/DefaultCaptcha/Refresh", { t: $('#CaptchaDeText').val(), __m__: "0" }, function(){$('#05e57ddd0bda4f1bbf903d7a932936bd').show();}); return false; }</script> 
+<br/>
+<img id="CaptchaImage" src="/corporate/DefaultCaptcha/Generate?t=2e4b7065118f40ebb2c82f2728fb960f"/><input id="CaptchaDeText" name="CaptchaDeText" type="hidden" value="2e4b7065118f40ebb2c82f2728fb960f" /> <br/><a href="#CaptchaImage" id="05e57ddd0bda4f1bbf903d7a932936bd" onclick="______a41c0c574afc466caa16936c9ce27707________()" style="display:none;">Refresh</a><br/>The answer is<br/><input autocomplete="off" autocorrect="off" id="CaptchaInputText" name="CaptchaInputText" type="text" value="" /><br/>
+
+                                    <div id="divCaptaValid" class="error" style="display:block;"></div>
+
+                                </li>
+                                <li>
+                                    <button type="submit" onclick="return ValidateLogin()" class="btn subBtn2" id="sendOtp">SEND OTP</button>
+                                </li>
+                            </ul>
+</form>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <input data-val="true" data-val-required="The IsLogin field is required." id="hfIsLogin" name="IsLogin" type="hidden" value="False" />
+    <button id="btnShowRelogin" type="button" data-toggle="modal" data-target="#divResetDialog" class="btn" style="display:none;">Reset</button>
+    \
+    
+        <div class="modal fade default_pop" id="divResetDialog" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" id="btnCloseReset" class="close" data-dismiss="modal"><img src="/corporate/Images/close.png"></button>
+                        <h4 class="modal-title">Alert</h4>
+                    </div>
+
+                    <div class="modal-body pddng20">
+                        <p class="pop_txt" style="text-align:center;">
+                            
+                            Seems account is already logged in.<br> If you click on 'YES' button, previous session will be logged out.
+                            
+                        </p>
+
+                        <div class="col-md-12 mdmftr">
+                            <button type="button" class="btn" onclick="AllowLogin(0)">Yes</button>
+                            <button type="button" class="btn blue successclickMail" data-dismiss="modal">No</button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer id="footerElement" class="moveup unselectable">
+            <div class="black-patch">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="b-patch-list">
+
+                                <ul class="row" >
+                                    <li class="col-lg-3 col-md-3  col-sm-6">
+                                        <div class="col-1">
+                                            <img src="/corporate/Images/qst.png" class="img-responsive mobbBat2">
+                                            <p><b class="text-upr">Question?</b> <span>Visit the</span> <a href="/corporate/FAQ.html" target="_blank"><b>FAQs</b></a></p>
+                                        </div>
+                                    </li>
+
+                                    <li class="col-lg-2 col-md-2  col-sm-6 mobbBat">
+                                        <div class="col-1">
+                                            <img src="/corporate/Images/or.png" class="img-responsive">
+                                            <p><b class="text-upr">Get in touch</b></p>
+                                        </div>
+                                    </li>
+
+                                    <li class="col-lg-4 col-md-4  col-sm-6">
+                                        <div class="col-1">
+                                            <img src="/corporate/Images/phone.png" class="img-responsive">
+                                            <p>
+                                                <a>022-68591800 (9:00AM-9:00PM Mon-Fri)</a>
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                    
+
+                                    <li class="col-lg-2 col-md-2  col-sm-6 d-lastLi">
+                                        <div class="col-1">
+                                            <img src="/corporate/Images/Footeremail.png" class="img-responsive" style="top:2px;">
+                                            <p style="margin-bottom:7px"><a style="margin-left:0px;">HCM@edelweissfin.com</a></p>
+                                        </div>
+                                    </li>
+
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="footer-grid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 box">
+                            <h2>about us</h2>
+                            <a href="/corporate/_AboutUs.html" target="_blank">About Edelweiss Gallagher</a>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 box">
+                            <h2>documents & links</h2>
+                            <a href="/corporate/_DosDonts.html" target="_blank">Do's and Don'ts</a>
+                            <a href="https://www.irdai.gov.in/Defaulthome.aspx?page=H1" target="_blank">IRDAI Website</a>
+                            <a href="https://ibai.org/" target="_blank">IBAI Website</a>
+                            <a href="https://www.eibl.co.in/CSR%20Policy%20-%20EGIBL.pdf" target="_blank">CSR Policy</a>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 box">
+                            
+
+                            <div class="form-group tpa">
+                                
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 box">
+                            <a href="#" class="feed-btn Clear" data-toggle="modal" data-target="#feedbackPup">give us feedback</a>
+
+                            
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="ftr-text">
+                                <p style="text-align: justify;">
+                                    Insurance is the subject matter of solicitation. Bluebox is an initiative of Edelweiss Gallagher Insurance Brokers Limited | Edelweiss Gallagher Insurance Brokers Limited Composite Broker (General) | IRDAI License No. 295 | Validity Period: 24/03/2020–23/03/2023 | CIN: U72200MH2000PLC124096 | Regd. & Corp. Off.: Edelweiss Gallagher Insurance Brokers Limited, 2nd Floor, Tower 3, Wing B, Kohinoor City Mall, Kirol Road, Kurla (West), Mumbai – 400 070 | Tel: 022-67133700 | <a href="https://www.eibl.co.in/" target="_blank">www.eibl.co.in</a> | The insurance companies within the Edelweiss Group are Edelweiss General Insurance Company Limited and Edelweiss Tokio Life Insurance Company Limited | Principal Officer: Mr. Vinay Sohani, Phone: 022-67133700 | Product Information is authentic and solely based on the information received from the insurer.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="site-credit">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 ">
+                            <p>All rights reserved by Edelweiss Gallagher</p>
+                        </div>
+
+                        <div class="col-md-6 f-credit-link">
+                            <a href="https://www.eibl.co.in/PrivacyPolicy/PrivacyPolicy" target="_blank">Privacy Policy</a>
+                            <a href="https://www.eibl.co.in/TermsNConditions/TermsNConditions" target="_blank">Terms of Use</a>
+                            <a href="https://www.eibl.co.in/Disclaimer/Disclaimer" target="_blank">Disclaimer</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </footer>
+
+
+        <script src="/corporate/Scripts/jquery.min.js" type="text/javascript"></script>
+        <script src="/corporate/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+        <script src="/corporate/Scripts/jquery.js" type="text/javascript"></script>
+        <script src="/corporate/Scripts/jquery.scrolling-tabs.js" type="text/javascript"></script>
+        <script src="/corporate/Scripts/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/corporate/Scripts/bootstrap-select.min.js" type="text/javascript"></script>
+
+        <script src="/corporate/Scripts/moment.min.js" type="text/javascript"></script>
+        <script src="/corporate/Scripts/Login/Login.js" type="text/javascript"></script>
+
+
+
+</body>
+</html>
+
+<div class="modal fade default_pop feedBackPup" id="feedbackPup" role="dialog">
+    <div class="modal-dialog feedBackModel">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><img src="/corporate/Images/close.png"></button>
+                <h4 class="modal-title">Feedback</h4>
+            </div>
+
+            <div class="modal-body">
+                <ul class="row">
+                    <li class="col-lg-6 col-md-6 col-sm-12">
+                        <label>Your Name <span class="MandField">*</span></label>
+                        <input type="text" class="form-control AvoidMultipleSpace Firstcapital" placeholder="Enter Your Name" id="txtName" maxlength="100" autocomplete="off" />
+                        <span class="errMsg error" id="errName" style="margin-top: -5px;"></span>
+                    </li>
+                    <li class="col-lg-6 col-md-6 col-sm-12">
+                        <label>Email ID <span class="MandField">*</span></label>
+                        <input type="text" class="form-control input100 dropdisable" placeholder="Enter Email ID" id="txtEmail" maxlength="100" onkeypress="return AvoidSpace(event)" autocomplete="off" />
+                        <span class="errMsg error" id="errEmail" style="margin-top: -5px;"></span>
+                    </li>
+                    <li class="col-lg-6 col-md-6 col-sm-12">
+                        <label>Company Name <span class="MandField">*</span></label>
+                        <input type="text" class="form-control AvoidMultipleSpace" placeholder="Enter Company Name" id="txtComp" maxlength="100" autocomplete="off" />
+                        <span class="errMsg error" id="errComp" style="margin-top: -5px;"></span>
+                    </li>
+                    <li class="col-lg-6 col-md-6 col-sm-12">
+                        <label>Mobile No.</label>
+                        <input type="text" class="form-control numeric" placeholder="Enter Mobile No." id="txtMobNo" maxlength="10" autocomplete="off" />
+                    </li>
+                    <li class="col-lg-6 col-md-6 col-sm-12">
+                        <label>Category <span class="MandField">*</span></label>
+                        <div class="formfield selectdropdown">
+                            <select class="selectpicker" id="ddlCategory" onchange="ValidCategory(0)">
+                                <option data-tokens="" value="0"> Select</option>
+                                <option data-tokens="" value="1">Suggestion</option>
+                                <option data-tokens="" value="2">Complaint</option>
+                            </select>
+                        </div>
+                        <span class="errMsg error" id="errCategory" style="margin-top: -5px;"></span>
+                    </li>
+                    <li class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom:10px">
+                        <label>Description <span class="MandField">*</span></label>
+                        <textarea type="text" class="form-control cmn_input textarea" name="" rows="5" placeholder="Describe your feedback" id="txtComment" maxlength="500" autocomplete="off"></textarea>
+                        <span class="errMsg error" id="errComment" style="margin-top: -5px;"></span>
+                    </li>
+                </ul>
+
+                <div class="col-md-12 mdmftr">
+                    <button type="button" class="btn Clear" onclick="ClearFields()">Clear</button>
+                    <button type="button" class="btn blue successclick" onclick="FeedBackSave()" id="btnFeedback">Submit</button>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="success-pop" id="change_meFeedBack">
+    <img src="/corporate/Images/tik.png"> We have summited your feedback successfully!
+</div>
+
+<script>
+    var GiveFeedback = '/corporate/Login/GiveFeedback';
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var controls = $(".dropdisable");
+
+        controls.bind("drop", function () {
+            return false;
+        });
+
+        var controls1 = $(".pastedisable");
+
+        controls1.bind("paste", function () {
+            return false;
+        });
+
+        $("#txtName").unbind('blur').blur(function () {
+           
+            ValidName(0);
+
+            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
+                $('#btnFeedback').attr('disabled', 'disabled');
+            }
+            else {
+                $('#btnFeedback').removeAttr('disabled');
+            }
+        })
+
+        $("#txtName").on("keyup", function () {
+
+            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
+                $('#btnFeedback').attr('disabled', 'disabled');
+            }
+            else {
+                $('#btnFeedback').removeAttr('disabled');
+            }
+        });
+
+        $("#txtComment").unbind('blur').blur(function () {
+            ValidComment(0);
+
+            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
+                $('#btnFeedback').attr('disabled', 'disabled');
+            }
+            else {
+                $('#btnFeedback').removeAttr('disabled');
+            }
+        })
+        $("#txtComment").on("keyup", function () {
+
+            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
+                $('#btnFeedback').attr('disabled', 'disabled');
+            }
+            else {
+                $('#btnFeedback').removeAttr('disabled');
+            }
+        });
+
+
+
+
+
+        $("#txtComp").unbind('blur').blur(function () {
+            ValidCompName(0);
+
+            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
+                $('#btnFeedback').attr('disabled', 'disabled');
+            }
+            else {
+                $('#btnFeedback').removeAttr('disabled');
+            }
+        })
+        $("#txtComp").on("keyup", function () {
+
+            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
+                $('#btnFeedback').attr('disabled', 'disabled');
+            }
+            else {
+                $('#btnFeedback').removeAttr('disabled');
+            }
+        });
+
+
+
+        $("#txtEmail").unbind('blur').blur(function () {
+            ValidEmailID(0);
+
+            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
+                $('#btnFeedback').attr('disabled', 'disabled');
+            }
+            else {
+                $('#btnFeedback').removeAttr('disabled');
+            }
+        })
+
+        $("#txtEmail").on("keyup", function () {
+
+            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
+                $('#btnFeedback').attr('disabled', 'disabled');
+            }
+            else {
+                $('#btnFeedback').removeAttr('disabled');
+            }
+        });
+
+        $('.AvoidMultipleSpace').on('keyup', function (e) {
+            var $this = $(this);
+            $(this).val($this.val().replace(/(\s{2,})|[^a-zA-Z0-9\.']/g, ' ').replace(/^\s*/, ''));
+
+        });
+
+        function fnNotempty(currval) {
+            if (currval != undefined && currval != null && $.trim(currval) != "") { return true; } return false;
+        }
+
+
+        $('.Firstcapital').on('keyup', function () {
+
+            if (fnNotempty($(this).val()))
+                $(this).val($(this).val().toLowerCase().replace(/\b[a-z]/g, function (letter) { return letter.toUpperCase(); }));
+        });
+
+    });
+</script>
