@@ -1,435 +1,523 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-    <link rel="icon" href="/corporate/Images/favicon.png" type="image/x-icon">
-    <title>Corporate Portal</title>
-    <link rel="stylesheet" href="/corporate/Content/bootstrap.min.css">
-    <link href="/corporate/Content/bootstrap-select.min.css" rel="stylesheet">
-    <link href="/corporate/Content/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/corporate/Content/style.css">
-    <link rel="stylesheet" href="/corporate/Content/responsive.css">
-    <link href="/corporate/Content/gmchr_custom.css" rel="stylesheet" type="text/css" />
-    <style>
-        .captchaImageStyle {
-            width: 320px;
-            height: 55px;
-            border: solid 1px #d2d2d2;
-            border-radius:4px;
-        }
-        .loginBox {
-            margin-bottom: 211px !important;
-        }
-        .moveup {
-            position: relative;
-            /* top: -232px; */
-            /* font-size: 14px; */
-            margin: auto;
-            /* max-width: 840px; */
-            margin: auto;
-            width: 100%;
-            position: relative;
-            padding: 20px 0;
-        }
-        .loginBoxMain {
-                   margin-top:29px;
-        }
-    </style>
-</head>
 
-<body bgcolor="#f7f8fc" style="height: 100vh; /* display:flex; */ padding-top: 0;" class="unselectable">
-    <div class="loginBox">
-        <div class="loginBoxMain">
-            <ul class="row loginUl">
-                <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pr-0">
-                    <div class="logBg">
-                        <div class="logoLogin">
-                            <img src="/corporate/Images/logo-login.png" />
-                        </div>
-                        <div class="loginTxt">
-                            <h4>Corporate Portal </h4>
-                            <p>
-                                Corporate Health Claims <br /> Management Simplified!
-                            </p>
-                        </div>
-                        
-                    </div>
-                </li>
-                <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-<form action="/corporate/Login/SendOTP" method="post">                            <ul class="loginRight loginUl" id="loginBox">
-                                <li class="otpfg"><h3>Login</h3> </li>
-                                <li>
-                                    <label>Corporate Email ID</label>
-
-                                    <input autocomplete="off" class="form-control input100 dropdisable" id="txtEmailId" maxlength="50" name="EMAIL_ID" onkeypress="return AvoidSpace(event)" placeholder="Enter Corporate Email ID" type="text" value="" />
-
-                                    <div id="divEmailIdValid" class="error" style="display:block;"></div>
-                                </li>
-
-                                <li class="captchaBoxMain">
-                                    
-<script type="text/javascript">
-$(function () {$('#05e57ddd0bda4f1bbf903d7a932936bd').show();})
-function ______a41c0c574afc466caa16936c9ce27707________() { $('#05e57ddd0bda4f1bbf903d7a932936bd').hide(); $.post("/corporate/DefaultCaptcha/Refresh", { t: $('#CaptchaDeText').val(), __m__: "0" }, function(){$('#05e57ddd0bda4f1bbf903d7a932936bd').show();}); return false; }</script> 
-<br/>
-<img id="CaptchaImage" src="/corporate/DefaultCaptcha/Generate?t=2e4b7065118f40ebb2c82f2728fb960f"/><input id="CaptchaDeText" name="CaptchaDeText" type="hidden" value="2e4b7065118f40ebb2c82f2728fb960f" /> <br/><a href="#CaptchaImage" id="05e57ddd0bda4f1bbf903d7a932936bd" onclick="______a41c0c574afc466caa16936c9ce27707________()" style="display:none;">Refresh</a><br/>The answer is<br/><input autocomplete="off" autocorrect="off" id="CaptchaInputText" name="CaptchaInputText" type="text" value="" /><br/>
-
-                                    <div id="divCaptaValid" class="error" style="display:block;"></div>
-
-                                </li>
-                                <li>
-                                    <button type="submit" onclick="return ValidateLogin()" class="btn subBtn2" id="sendOtp">SEND OTP</button>
-                                </li>
-                            </ul>
-</form>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <input data-val="true" data-val-required="The IsLogin field is required." id="hfIsLogin" name="IsLogin" type="hidden" value="False" />
-    <button id="btnShowRelogin" type="button" data-toggle="modal" data-target="#divResetDialog" class="btn" style="display:none;">Reset</button>
-    \
     
-        <div class="modal fade default_pop" id="divResetDialog" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" id="btnCloseReset" class="close" data-dismiss="modal"><img src="/corporate/Images/close.png"></button>
-                        <h4 class="modal-title">Alert</h4>
-                    </div>
-
-                    <div class="modal-body pddng20">
-                        <p class="pop_txt" style="text-align:center;">
-                            
-                            Seems account is already logged in.<br> If you click on 'YES' button, previous session will be logged out.
-                            
-                        </p>
-
-                        <div class="col-md-12 mdmftr">
-                            <button type="button" class="btn" onclick="AllowLogin(0)">Yes</button>
-                            <button type="button" class="btn blue successclickMail" data-dismiss="modal">No</button>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <footer id="footerElement" class="moveup unselectable">
-            <div class="black-patch">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="b-patch-list">
-
-                                <ul class="row" >
-                                    <li class="col-lg-3 col-md-3  col-sm-6">
-                                        <div class="col-1">
-                                            <img src="/corporate/Images/qst.png" class="img-responsive mobbBat2">
-                                            <p><b class="text-upr">Question?</b> <span>Visit the</span> <a href="/corporate/FAQ.html" target="_blank"><b>FAQs</b></a></p>
-                                        </div>
-                                    </li>
-
-                                    <li class="col-lg-2 col-md-2  col-sm-6 mobbBat">
-                                        <div class="col-1">
-                                            <img src="/corporate/Images/or.png" class="img-responsive">
-                                            <p><b class="text-upr">Get in touch</b></p>
-                                        </div>
-                                    </li>
-
-                                    <li class="col-lg-4 col-md-4  col-sm-6">
-                                        <div class="col-1">
-                                            <img src="/corporate/Images/phone.png" class="img-responsive">
-                                            <p>
-                                                <a>022-68591800 (9:00AM-9:00PM Mon-Fri)</a>
-                                            </p>
-                                        </div>
-                                    </li>
-
-                                    
-
-                                    <li class="col-lg-2 col-md-2  col-sm-6 d-lastLi">
-                                        <div class="col-1">
-                                            <img src="/corporate/Images/Footeremail.png" class="img-responsive" style="top:2px;">
-                                            <p style="margin-bottom:7px"><a style="margin-left:0px;">HCM@edelweissfin.com</a></p>
-                                        </div>
-                                    </li>
-
-                                    
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
-            <div class="footer-grid">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 box">
-                            <h2>about us</h2>
-                            <a href="/corporate/_AboutUs.html" target="_blank">About Edelweiss Gallagher</a>
-                        </div>
 
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 box">
-                            <h2>documents & links</h2>
-                            <a href="/corporate/_DosDonts.html" target="_blank">Do's and Don'ts</a>
-                            <a href="https://www.irdai.gov.in/Defaulthome.aspx?page=H1" target="_blank">IRDAI Website</a>
-                            <a href="https://ibai.org/" target="_blank">IBAI Website</a>
-                            <a href="https://www.eibl.co.in/CSR%20Policy%20-%20EGIBL.pdf" target="_blank">CSR Policy</a>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 box">
-                            
-
-                            <div class="form-group tpa">
-                                
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 box">
-                            <a href="#" class="feed-btn Clear" data-toggle="modal" data-target="#feedbackPup">give us feedback</a>
-
-                            
-                        </div>
-
-                        <div class="col-xs-12">
-                            <div class="ftr-text">
-                                <p style="text-align: justify;">
-                                    Insurance is the subject matter of solicitation. Bluebox is an initiative of Edelweiss Gallagher Insurance Brokers Limited | Edelweiss Gallagher Insurance Brokers Limited Composite Broker (General) | IRDAI License No. 295 | Validity Period: 24/03/2020–23/03/2023 | CIN: U72200MH2000PLC124096 | Regd. & Corp. Off.: Edelweiss Gallagher Insurance Brokers Limited, 2nd Floor, Tower 3, Wing B, Kohinoor City Mall, Kirol Road, Kurla (West), Mumbai – 400 070 | Tel: 022-67133700 | <a href="https://www.eibl.co.in/" target="_blank">www.eibl.co.in</a> | The insurance companies within the Edelweiss Group are Edelweiss General Insurance Company Limited and Edelweiss Tokio Life Insurance Company Limited | Principal Officer: Mr. Vinay Sohani, Phone: 022-67133700 | Product Information is authentic and solely based on the information received from the insurer.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="site-credit">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 ">
-                            <p>All rights reserved by Edelweiss Gallagher</p>
-                        </div>
-
-                        <div class="col-md-6 f-credit-link">
-                            <a href="https://www.eibl.co.in/PrivacyPolicy/PrivacyPolicy" target="_blank">Privacy Policy</a>
-                            <a href="https://www.eibl.co.in/TermsNConditions/TermsNConditions" target="_blank">Terms of Use</a>
-                            <a href="https://www.eibl.co.in/Disclaimer/Disclaimer" target="_blank">Disclaimer</a>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </footer>
+    
 
 
-        <script src="/corporate/Scripts/jquery.min.js" type="text/javascript"></script>
-        <script src="/corporate/Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
-        <script src="/corporate/Scripts/jquery.js" type="text/javascript"></script>
-        <script src="/corporate/Scripts/jquery.scrolling-tabs.js" type="text/javascript"></script>
-        <script src="/corporate/Scripts/bootstrap.min.js" type="text/javascript"></script>
-        <script src="/corporate/Scripts/bootstrap-select.min.js" type="text/javascript"></script>
 
-        <script src="/corporate/Scripts/moment.min.js" type="text/javascript"></script>
-        <script src="/corporate/Scripts/Login/Login.js" type="text/javascript"></script>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="robots" content="noindex">
+    <link rel="shortcut icon" href="https://appleid.cdn-apple.com/daw/IDMSWebAuth/static/30Jun2021/images/favicon.ico" type="image/X-icon"/>
+    <title>Sign In - Apple</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="Author" content="Apple Inc.">
+    <meta name="Description" content="Sign in with your Apple ID">
+    <meta name="Title" content="Sign in with your Apple ID">
+    
 
 
+<link rel="stylesheet" type="text/css"
+      href="https://www.apple.com/ac/globalfooter/3/en_US/styles/ac-globalfooter.built.css"/>
+
+    
+    
+
+    <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/authService.latest.min.js"></script>
+    <script src="https://appleid.cdn-apple.com/daw/IDMSWebAuth/static/30Jun2021/views/static/js/retina.js" type="text/javascript"
+            charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://appleid.cdn-apple.com/daw/IDMSWebAuth/static/30Jun2021/views/static/css/login/embedLogin.css"/>
+    
+    <link rel="alternate" hreflang='x-default' href=''/>
+    
+    
+        <style>
+            .wrapper {
+                margin-top: -44px;
+                padding-top: 44px;
+            }
+        </style>
+        
+
+
+
+
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <link rel="stylesheet" href="https://www.apple.com/wss/fonts?families=SF+Pro,v1|SF+Pro+Icons,v1"
+              type="text/css"/>
+    
+
+<link rel="stylesheet" type="text/css"
+      href="https://www.apple.com/ac/globalnav/5/en_US/styles/ac-globalnav.built.css"/>
+
+<aside id="ac-gn-segmentbar" class="ac-gn-segmentbar" lang="en-US" dir="ltr" data-strings="{ 'exit': 'Exit', 'view': '{%STOREFRONT%} Store Home', 'segments': { 'smb': 'Business Store Home', 'eduInd': 'Education Store Home', 'other': 'Store Home' } }">
+
+</aside>
+
+<input type="checkbox" id="ac-gn-menustate" class="ac-gn-menustate" />
+<nav id="ac-globalnav" class="no-js" role="navigation" aria-label="Global" data-hires="false" data-analytics-region="global nav" lang="en-US" dir="ltr" data-www-domain="www.apple.com" data-store-locale="us" data-store-root-path="/us" data-store-api="/[storefront]/shop/bag/status" data-search-locale="en_US" data-search-locale="en_US" data-search-suggestions-api="/search-services/suggestions/" data-search-defaultlinks-api="/search-services/suggestions/defaultlinks/">
+	<div class="ac-gn-content">
+		<ul class="ac-gn-header">
+			
+<li class="ac-gn-item ac-gn-menuicon">
+				<label class="ac-gn-menuicon-label" for="ac-gn-menustate" aria-hidden="true">
+					<span class="ac-gn-menuicon-bread ac-gn-menuicon-bread-top">
+						<span class="ac-gn-menuicon-bread-crust ac-gn-menuicon-bread-crust-top"></span>
+					</span>
+					<span class="ac-gn-menuicon-bread ac-gn-menuicon-bread-bottom">
+						<span class="ac-gn-menuicon-bread-crust ac-gn-menuicon-bread-crust-bottom"></span>
+					</span>
+				</label>
+				<a href="#ac-gn-menustate" role="button" class="ac-gn-menuanchor ac-gn-menuanchor-open" id="ac-gn-menuanchor-open">
+					<span class="ac-gn-menuanchor-label">Global Nav Open Menu</span>
+				</a>
+				<a href="#" role="button" class="ac-gn-menuanchor ac-gn-menuanchor-close" id="ac-gn-menuanchor-close">
+					<span class="ac-gn-menuanchor-label">Global Nav Close Menu</span>
+				</a>
+			</li>
+
+			<li class="ac-gn-item ac-gn-apple">
+				<a class="ac-gn-link ac-gn-link-apple" href="//www.apple.com/" data-analytics-title="apple home" id="ac-gn-firstfocus-small">
+					<span class="ac-gn-link-text">Apple</span>
+				</a>
+			</li>
+			
+<li class="ac-gn-item ac-gn-bag ac-gn-bag-small" id="ac-gn-bag-small">
+				<div class="ac-gn-bag-wrapper">
+					<a class="ac-gn-link ac-gn-link-bag" href="//www.apple.com/us/shop/goto/bag" data-analytics-title="bag" data-analytics-click="bag" aria-label="Shopping Bag" data-string-badge="Shopping Bag with item count :">
+						<span class="ac-gn-link-text">Shopping Bag</span>
+					</a>
+					<span class="ac-gn-bag-badge">
+						<span class="ac-gn-bag-badge-separator"></span>
+					<span class="ac-gn-bag-badge-number"></span>
+					<span class="ac-gn-bag-badge-unit">+</span>
+					</span>
+				</div>
+				<span class="ac-gn-bagview-caret ac-gn-bagview-caret-large"></span>
+			</li>
+
+		</ul>
+		<div class="ac-gn-search-placeholder-container" role="search">
+			<div class="ac-gn-search ac-gn-search-small">
+				<a id="ac-gn-link-search-small" class="ac-gn-link" href="//www.apple.com/us/search" data-analytics-title="search" data-analytics-click="search" data-analytics-intrapage-link aria-label="Search apple.com">
+					<div class="ac-gn-search-placeholder-bar">
+						<div class="ac-gn-search-placeholder-input">
+							<div class="ac-gn-search-placeholder-input-text" aria-hidden="true">
+								<div class="ac-gn-link-search ac-gn-search-placeholder-input-icon"></div>
+								<span class="ac-gn-search-placeholder">Search apple.com</span>
+							</div>
+						</div>
+						<div class="ac-gn-searchview-close ac-gn-searchview-close-small ac-gn-search-placeholder-searchview-close">
+							<span class="ac-gn-searchview-close-cancel" aria-hidden="true">Cancel</span>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<ul class="ac-gn-list">
+			<li class="ac-gn-item ac-gn-apple">
+				<a class="ac-gn-link ac-gn-link-apple" href="//www.apple.com/" data-analytics-title="apple home" id="ac-gn-firstfocus">
+						<span class="ac-gn-link-text">Apple</span>
+					</a>
+			</li>
+			
+<li class="ac-gn-item ac-gn-item-menu ac-gn-mac">
+				<a class="ac-gn-link ac-gn-link-mac" href="//www.apple.com/mac/" data-analytics-title="mac">
+						<span class="ac-gn-link-text">Mac</span>
+					</a>
+			</li>
+
+			
+<li class="ac-gn-item ac-gn-item-menu ac-gn-ipad">
+				<a class="ac-gn-link ac-gn-link-ipad" href="//www.apple.com/ipad/" data-analytics-title="ipad">
+						<span class="ac-gn-link-text">iPad</span>
+					</a>
+			</li>
+
+			
+<li class="ac-gn-item ac-gn-item-menu ac-gn-iphone">
+				<a class="ac-gn-link ac-gn-link-iphone" href="//www.apple.com/iphone/" data-analytics-title="iphone">
+						<span class="ac-gn-link-text">iPhone</span>
+					</a>
+			</li>
+
+			
+<li class="ac-gn-item ac-gn-item-menu ac-gn-watch">
+				<a class="ac-gn-link ac-gn-link-watch" href="//www.apple.com/watch/" data-analytics-title="watch">
+						<span class="ac-gn-link-text">Watch</span>
+					</a>
+			</li>
+
+			
+<li class="ac-gn-item ac-gn-item-menu ac-gn-tv">
+				<a class="ac-gn-link ac-gn-link-tv" href="//www.apple.com/tv/" data-analytics-title="tv">
+						<span class="ac-gn-link-text">TV</span>
+					</a>
+			</li>
+
+			
+<li class="ac-gn-item ac-gn-item-menu ac-gn-music">
+				<a class="ac-gn-link ac-gn-link-music" href="//www.apple.com/music/" data-analytics-title="music">
+						<span class="ac-gn-link-text">Music</span>
+					</a>
+			</li>
+
+			
+<li class="ac-gn-item ac-gn-item-menu ac-gn-support">
+				<a class="ac-gn-link ac-gn-link-support" href="https://support.apple.com" data-analytics-title="support">
+						<span class="ac-gn-link-text">Support</span>
+					</a>
+			</li>
+
+			
+<li class="ac-gn-item ac-gn-item-menu ac-gn-search" role="search">
+				<a id="ac-gn-link-search" class="ac-gn-link ac-gn-link-search" href="//www.apple.com/us/search" data-analytics-title="search" data-analytics-click="search" data-analytics-intrapage-link aria-label="Search apple.com"></a>
+			</li>
+
+			
+<li class="ac-gn-item ac-gn-bag" id="ac-gn-bag">
+				<div class="ac-gn-bag-wrapper">
+					<a class="ac-gn-link ac-gn-link-bag" href="//www.apple.com/us/shop/goto/bag" data-analytics-title="bag" data-analytics-click="bag" aria-label="Shopping Bag" data-string-badge="Shopping Bag with item count : {%BAGITEMCOUNT%}">
+							<span class="ac-gn-link-text">Shopping Bag</span>
+						</a>
+					<span class="ac-gn-bag-badge" aria-hidden="true">
+								<span class="ac-gn-bag-badge-separator"></span>
+					<span class="ac-gn-bag-badge-number"></span>
+					<span class="ac-gn-bag-badge-unit">+</span>
+					</span>
+				</div>
+				<span class="ac-gn-bagview-caret ac-gn-bagview-caret-large"></span>
+			</li>
+
+		</ul>
+		
+<aside id="ac-gn-searchview" class="ac-gn-searchview" role="search" data-analytics-region="search">
+			<div class="ac-gn-searchview-content">
+				<div class="ac-gn-searchview-bar">
+					<div class="ac-gn-searchview-bar-wrapper">
+						<form id="ac-gn-searchform" class="ac-gn-searchform" action="https://www.apple.com/us/search" method="get">
+							<div class="ac-gn-searchform-wrapper">
+								<input id="ac-gn-searchform-input" class="ac-gn-searchform-input" type="text" aria-label="Search apple.com" placeholder="Search apple.com" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="true" aria-owns="quicklinks suggestions" />
+								<input id="ac-gn-searchform-src" type="hidden" name="src" value="globalnav" />
+								<button id="ac-gn-searchform-submit" class="ac-gn-searchform-submit" type="submit" disabled aria-label="Submit Search"></button>
+								<button id="ac-gn-searchform-reset" class="ac-gn-searchform-reset" type="reset" disabled aria-label="Clear Search">
+										<span class="ac-gn-searchform-reset-background"></span>
+									</button>
+							</div>
+						</form>
+						<button id="ac-gn-searchview-close-small" class="ac-gn-searchview-close ac-gn-searchview-close-small" aria-label="Cancel Search">
+								<span class="ac-gn-searchview-close-cancel" aria-hidden="true">
+									Cancel
+								</span>
+							</button>
+					</div>
+				</div>
+				
+<aside id="ac-gn-searchresults" class="ac-gn-searchresults" data-string-quicklinks="Quick Links" data-string-suggestions="Suggested Searches" data-string-noresults="">
+</aside>
+
+			</div>
+			<button id="ac-gn-searchview-close" class="ac-gn-searchview-close" aria-label="Cancel Search">
+					<span class="ac-gn-searchview-close-wrapper">
+						<span class="ac-gn-searchview-close-left"></span>
+						<span class="ac-gn-searchview-close-right"></span>
+					</span>
+				</button>
+		
+</aside>
+
+		
+<aside class="ac-gn-bagview" data-analytics-region="bag">
+			<div class="ac-gn-bagview-scrim">
+				<span class="ac-gn-bagview-caret ac-gn-bagview-caret-small"></span>
+			</div>
+			<div class="ac-gn-bagview-content" id="ac-gn-bagview-content">
+			</div>
+		
+</aside>
+
+	</div>
+</nav>
+<div class="ac-gn-blur"></div>
+<div id="ac-gn-curtain" class="ac-gn-curtain"></div>
+<div id="ac-gn-placeholder" class="ac-nav-placeholder"></div>
+
+<script type="text/javascript"
+        src="https://www.apple.com/ac/globalnav/3/en_US/scripts/ac-globalnav.built.js"></script>
+<link rel="stylesheet" type="text/css"
+      href="https://appleid.cdn-apple.com/daw/IDMSWebAuth/static/30Jun2021/views/static/css/common/globalheader.css"/>
+    
+</head>
+<body data-theme="gray" style="background-color: #FFFFFF">
+
+<noscript>
+    <div class="noscript ltr">
+        <h1>Please enable JavaScript.</h1>
+        <p>Please turn on JavaScript to properly view this page.</p>
+    </div>
+</noscript>
+<div class="wrapper embed" style="background-color: #FFFFFF">
+    <div id="auth-container" class="si-frame">
+    </div>
+    
+    
+        
+    
+
+    
+
+    
+        
+
+    
+    
+        
+        
+            
+        
+        
+        
+            
+        
+    
+
+    <!-- If app team needs to set ap name and signin string(description) separatly, please refer widget.1879.* configuration -->
+    
+    
+    
+        
+    
+    
+    
+    
+
+
+
+	
+	
+
+    
+    <script type="application/json" id="embed_login_boot_args">
+        {"direct":{"signInRequestUrl":"https%3A%2F%2Fidmsa.apple.com%2Fsignin%3Flanguage%3DUS-EN%26rv%3D0%26path%3D%252F%26appIdKey%3Dd7abc4ccb9b9f72d2f98c8d82fb9948668d09380a40c0fa64007a906a7502b4f","showGlobalFooter":true,"createLinkText":"","writeAlternateCookieForOAuth":"false","appReturnUrl":"https%3A%2F%2Fmysupport.apple.com%2F","locale":"US-EN","authWidgetConfig":{"authWidgetURL":"https://idmsa.apple.com/appleauth","widgetKey":"92f19b477c5c9be6ab17f3ec2b1b2b7db4d00a9a8c973e3d6c90dac08b91de71","authServiceUrl":"https://appleid.cdn-apple.com/appleauth/static/jsapi/authService.latest.min.js","widgetBackgroundColor":{"defaultBackgroundColorForOAuthStandardLogin":"FFFFFF","defaultBackgroundColorForStandardLogin":"FFFFFF"}},"appId":4725,"appNameString":" ","enableTiburonInd":true,"dawAppData":"{\"appId\":4725,\"appCustomAttributes\":{\"showAppleIDLogo\":false,\"widgetMode\":\"inline\",\"showRememberMe\":true,\"enableKeepMeSignedIn\":false,\"showCreateLink\":true,\"logoWidth\":\"auto\",\"showGlobalNav\":true,\"showGlobalFooter\":true,\"hideContrySelector\":false,\"openAppleIDLinksInNewWindow\":true,\"prePopulateAppleId\":false,\"myAccessCreateLink\":false,\"disableiForgotReturnUrl\":false,\"rememberMeChecked\":false,\"enableEyebrowTextbox\":true,\"showIForgotLink\":true,\"autoThemeAdjust\":false}}","hostUrl":"https://idmsa.apple.com","authUIMode":"embed","signInString":"Sign in with your Apple ID","app":{"appIdKey":"d7abc4ccb9b9f72d2f98c8d82fb9948668d09380a40c0fa64007a906a7502b4f","returnUrlVersion":"0","subPath":"/","language":"US-EN","accNameLocked":false,"requestUri":"/signin","backgroundColor":"FFFFFF","authResponseType":"COOKIE","oauthRequest":false},"signInStringDescription":"","iframeId":"daw-0f1be340-3de0-4d96-a8c4-32c65977d1c6"}}
+    </script>
+    <script type="text/javascript" src="https://appleid.cdn-apple.com/daw/IDMSWebAuth/static/30Jun2021/views/static/js/boot/embedLoginBoot.js"></script>
+</div>
+
+<form id="callBackForm" name="form1" style="display:none" action="signin" method="post">
+    <input type="hidden" id="rememberMe" name="rememberMe" value="false"/>
+    <input type="hidden" id="grantCode" name="grantCode" value=""/>
+    <input type="hidden" id="iframeId" name="iframeId" value=""/>
+    
+        <input type="hidden" id="requestUri" name="requestUri" value="/signin"/>
+    
+    
+
+
+
+
+	<input type="hidden" id="appIdKey" name="appIdKey"
+		value="d7abc4ccb9b9f72d2f98c8d82fb9948668d09380a40c0fa64007a906a7502b4f" />
+
+
+<input type="hidden" id="language" name="language"
+	value="US-EN" />
+
+
+	<input type="hidden" id="path" name="path" value="/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+<input type="hidden" id="scnt" name="scnt" value="AAAAKjdGMDlEMDQzMzU3QkRFODcyNUI5MjUzNkRCMjEyQURDfDEAAAF6zbLZpchRC9RQFh5WPC7bP5qKpE0dC2Mq80wR4TSwdZrYcX9azFD9p0PaEUsACNHEIUcuCSpVWnyozwHUMBJVqTua7kZwWLhNrefLsCkqcbQy7TTw" />
+</form>
 
 </body>
-</html>
 
-<div class="modal fade default_pop feedBackPup" id="feedbackPup" role="dialog">
-    <div class="modal-dialog feedBackModel">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><img src="/corporate/Images/close.png"></button>
-                <h4 class="modal-title">Feedback</h4>
-            </div>
 
-            <div class="modal-body">
-                <ul class="row">
-                    <li class="col-lg-6 col-md-6 col-sm-12">
-                        <label>Your Name <span class="MandField">*</span></label>
-                        <input type="text" class="form-control AvoidMultipleSpace Firstcapital" placeholder="Enter Your Name" id="txtName" maxlength="100" autocomplete="off" />
-                        <span class="errMsg error" id="errName" style="margin-top: -5px;"></span>
-                    </li>
-                    <li class="col-lg-6 col-md-6 col-sm-12">
-                        <label>Email ID <span class="MandField">*</span></label>
-                        <input type="text" class="form-control input100 dropdisable" placeholder="Enter Email ID" id="txtEmail" maxlength="100" onkeypress="return AvoidSpace(event)" autocomplete="off" />
-                        <span class="errMsg error" id="errEmail" style="margin-top: -5px;"></span>
-                    </li>
-                    <li class="col-lg-6 col-md-6 col-sm-12">
-                        <label>Company Name <span class="MandField">*</span></label>
-                        <input type="text" class="form-control AvoidMultipleSpace" placeholder="Enter Company Name" id="txtComp" maxlength="100" autocomplete="off" />
-                        <span class="errMsg error" id="errComp" style="margin-top: -5px;"></span>
-                    </li>
-                    <li class="col-lg-6 col-md-6 col-sm-12">
-                        <label>Mobile No.</label>
-                        <input type="text" class="form-control numeric" placeholder="Enter Mobile No." id="txtMobNo" maxlength="10" autocomplete="off" />
-                    </li>
-                    <li class="col-lg-6 col-md-6 col-sm-12">
-                        <label>Category <span class="MandField">*</span></label>
-                        <div class="formfield selectdropdown">
-                            <select class="selectpicker" id="ddlCategory" onchange="ValidCategory(0)">
-                                <option data-tokens="" value="0"> Select</option>
-                                <option data-tokens="" value="1">Suggestion</option>
-                                <option data-tokens="" value="2">Complaint</option>
-                            </select>
-                        </div>
-                        <span class="errMsg error" id="errCategory" style="margin-top: -5px;"></span>
-                    </li>
-                    <li class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom:10px">
-                        <label>Description <span class="MandField">*</span></label>
-                        <textarea type="text" class="form-control cmn_input textarea" name="" rows="5" placeholder="Describe your feedback" id="txtComment" maxlength="500" autocomplete="off"></textarea>
-                        <span class="errMsg error" id="errComment" style="margin-top: -5px;"></span>
-                    </li>
-                </ul>
-
-                <div class="col-md-12 mdmftr">
-                    <button type="button" class="btn Clear" onclick="ClearFields()">Clear</button>
-                    <button type="button" class="btn blue successclick" onclick="FeedBackSave()" id="btnFeedback">Submit</button>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div class="success-pop" id="change_meFeedBack">
-    <img src="/corporate/Images/tik.png"> We have summited your feedback successfully!
-</div>
-
-<script>
-    var GiveFeedback = '/corporate/Login/GiveFeedback';
-</script>
-
-<script type="text/javascript">
-    $(function () {
-        var controls = $(".dropdisable");
-
-        controls.bind("drop", function () {
-            return false;
-        });
-
-        var controls1 = $(".pastedisable");
-
-        controls1.bind("paste", function () {
-            return false;
-        });
-
-        $("#txtName").unbind('blur').blur(function () {
-           
-            ValidName(0);
-
-            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
-                $('#btnFeedback').attr('disabled', 'disabled');
+    <style>
+        @media only screen and (min-device-width: 481px) {
+            .wrapper {
+                margin-bottom: -66px;
+                padding-bottom: 66px;
             }
-            else {
-                $('#btnFeedback').removeAttr('disabled');
-            }
-        })
-
-        $("#txtName").on("keyup", function () {
-
-            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
-                $('#btnFeedback').attr('disabled', 'disabled');
-            }
-            else {
-                $('#btnFeedback').removeAttr('disabled');
-            }
-        });
-
-        $("#txtComment").unbind('blur').blur(function () {
-            ValidComment(0);
-
-            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
-                $('#btnFeedback').attr('disabled', 'disabled');
-            }
-            else {
-                $('#btnFeedback').removeAttr('disabled');
-            }
-        })
-        $("#txtComment").on("keyup", function () {
-
-            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
-                $('#btnFeedback').attr('disabled', 'disabled');
-            }
-            else {
-                $('#btnFeedback').removeAttr('disabled');
-            }
-        });
-
-
-
-
-
-        $("#txtComp").unbind('blur').blur(function () {
-            ValidCompName(0);
-
-            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
-                $('#btnFeedback').attr('disabled', 'disabled');
-            }
-            else {
-                $('#btnFeedback').removeAttr('disabled');
-            }
-        })
-        $("#txtComp").on("keyup", function () {
-
-            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
-                $('#btnFeedback').attr('disabled', 'disabled');
-            }
-            else {
-                $('#btnFeedback').removeAttr('disabled');
-            }
-        });
-
-
-
-        $("#txtEmail").unbind('blur').blur(function () {
-            ValidEmailID(0);
-
-            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
-                $('#btnFeedback').attr('disabled', 'disabled');
-            }
-            else {
-                $('#btnFeedback').removeAttr('disabled');
-            }
-        })
-
-        $("#txtEmail").on("keyup", function () {
-
-            if ($('#txtName').val() == "" || $('#txtEmail').val() == "" || $('#txtComp').val() == "" || $('#txtComment').val() == "" || $('#ddlCategory').val().trim() == "0") {
-                $('#btnFeedback').attr('disabled', 'disabled');
-            }
-            else {
-                $('#btnFeedback').removeAttr('disabled');
-            }
-        });
-
-        $('.AvoidMultipleSpace').on('keyup', function (e) {
-            var $this = $(this);
-            $(this).val($this.val().replace(/(\s{2,})|[^a-zA-Z0-9\.']/g, ' ').replace(/^\s*/, ''));
-
-        });
-
-        function fnNotempty(currval) {
-            if (currval != undefined && currval != null && $.trim(currval) != "") { return true; } return false;
         }
 
+        @media only screen and (max-device-width: 480px) {
+            .wrapper {
+                margin-bottom: -122px;
+                padding-bottom: 122px;
+            }
+        }
+    </style>
+    
 
-        $('.Firstcapital').on('keyup', function () {
 
-            if (fnNotempty($(this).val()))
-                $(this).val($(this).val().toLowerCase().replace(/\b[a-z]/g, function (letter) { return letter.toUpperCase(); }));
-        });
 
-    });
-</script>
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+
+
+    
+
+
+
+
+<footer lang="en-US" aria-labelledby="ac-gf-label" role="contentinfo" data-analytics-region="global footer"
+        class="js no-touch svg no-oldie no-ie standard-footer" id="ac-globalfooter">
+    <div class="ac-gf-content">
+        <section class="ac-gf-footer">
+
+            <div class="ac-gf-footer-locale">
+                
+
+
+
+
+    
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+    
+    
+    
+        
+    
+    
+    <a class="ac-gf-footer-locale-link" title="Choose your country or region"
+       href="https://appleid.apple.com/choose-country-region?returnURL=https%3A%2F%2Fidmsa.apple.com%2Fsignin%3Frv%3D0%26path%3D%252F%26appIdKey%3Dd7abc4ccb9b9f72d2f98c8d82fb9948668d09380a40c0fa64007a906a7502b4f">
+        United States
+    </a>
+
+            </div>
+            <div class="ac-gf-footer-legal">
+                <div class="ac-gf-footer-legal-copyright">
+                    Copyright © 2021 Apple Inc. All rights reserved.
+                </div>
+                <div class="ac-gf-footer-legal-links">
+                    <a class="ac-gf-footer-legal-link"
+                       href="http://www.apple.com/privacy/privacy-policy/ "
+                       target="_blank">
+                        Privacy Policy
+                    </a>
+                    <a class="ac-gf-footer-legal-link" href="http://www.apple.com/legal/internet-services/terms/site.html" target="_blank">
+                        Terms of Use
+                    </a>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+</footer>
+
+
+
+
+</html>
